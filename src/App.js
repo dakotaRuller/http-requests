@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import './CSS/main.css';
+//Components
+import RequestSwitcher from "./Components/RequestSwitcher";
+import AjaxReq from "./Components/AjaxReq";
+import FetchReq from "./Components/FetchReq";
+import PromiseReq from "./Components/PromiseReq";
+import XMLHttpReq from './Components/XMLHttpReq'
 
 function App() {
+  const switcherArr = ["", "fetch", "promise", "xml-http"];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <RequestSwitcher paths={switcherArr}/>
+        <Switch>
+          <Route path="/" component={AjaxReq} exact/>
+          <Route path="/fetch" component={FetchReq}/>
+          <Route path="/promise" component={PromiseReq}/>
+          <Route path="/xml-http" component={XMLHttpReq}/>
+        </Switch>
+        {/*get some react-router setup goin on and get those http requests made and then start working on wordpress stuff or learn more about react-router and redux*/}
+        {/*maybe work on the wordpress stuff because its more lucrative in the immediate future and an added bonus is its new(to me) and fun to learn */}
+      </div>
+    </Router>
   );
 }
 

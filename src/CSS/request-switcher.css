@@ -1,0 +1,26 @@
+div.request-switcher {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: #eee;
+}
+
+button.switcher-btn {
+  color: white;
+}
+
+.ajax-req {
+  background-color: #66ACBD;
+}
+
+.fetch-req {
+ background-color: #3a62b0;
+}
+
+.promise-req {
+  background-color: #5D73C7;
+}
+
+.xml-req {
+  background-color: #5D9DC7;
+}

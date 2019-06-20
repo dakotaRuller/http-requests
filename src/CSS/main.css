@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded|Open+Sans+Condensed:300&display=swap');
+
+/*
+
+font-family: 'Encode Sans Expanded', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+
+*/
+
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: 'Encode Sans Expanded', sans-serif;
+}
+
+h1, h3 {
+  font-weight: 500;
+}
+
+ul {
+  list-style-type: none;
+  padding: 5px;
+}
+
+li.main-item {
+  color: #fff;
+  background-color: rgba(58, 98, 176, 0.71);
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+
+li.main-item:hover {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+button {
+  padding: 3px 10px;
+  background-color: #64B371;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  height: 30px;
+  opacity: 0.75;
+  transition: all 0.5s;
+}
+
+button:hover {
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+button:active {
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+button:focus {
+  outline: none;
+}
