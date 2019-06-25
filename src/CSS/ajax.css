@@ -3,7 +3,8 @@ div.ajax {
   margin:10px auto;
 }
 
-div.ajax p.disclaimer {
+div.ajax div.disclaimer-container {
+  margin-bottom: 15px;
   font-size: 12px;
 }
 

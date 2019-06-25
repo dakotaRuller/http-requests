@@ -1,0 +1,15 @@
+ul.space-x-flights {
+  width: 60%;
+  margin: 10px auto;
+}
+
+ul.space-x-flights li.mission-flight {
+  margin: 10px 5px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+ul.space-x-flights h2 {
+  font-weight: 300;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PageTemplate from "./PageTemplate";
-import '../CSS/fetch.css';
+import '../../CSS/fetch.css';
 const APIURL = "https://api.kanye.rest/";
 
 class FetchReq extends Component {
@@ -47,7 +47,6 @@ class FetchReq extends Component {
       <div>
         <h1>FetchRequest</h1>
         <PageTemplate
-          text="Fetch Request"
           reqType={"fetchAPI"}
           addItem={this.getData}
           data={this.state.data}
