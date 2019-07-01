@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import PageTemplate from "./PageTemplate";
+import Loader from '../StatelessComponents/CssLoader';
 import axios from 'axios';
+import CocktailModel from '../../Models/CocktailModel';
+
 //CSS
 import '../../CSS/ajax.css';
 
@@ -10,7 +13,8 @@ class AjaxReq extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      loading: false
     };
     this.getData = this.getData.bind(this);
   }
@@ -26,30 +30,28 @@ class AjaxReq extends Component {
     }
   }
 
-  createDataModel(data) {
-    let ingredientsArr = [];
-    let measurementsArr = [];
-    AjaxReq.dataArrayCreator(data, ingredientsArr, "strIngredient", 15);
-    AjaxReq.dataArrayCreator(data, measurementsArr, "strMeasure", 15);
-
-    let model = {
-      drinkName: data.strDrink,
-      instructions: data.strInstructions,
-      ingredients: ingredientsArr,
-      measurements: measurementsArr
-    };
-
-    return model;
-  }
-
   getData() {
+    //Dabble with the idea of making this action modular because this exact thing will be used across
+    //multiple files
+    this.setState({loading: true});
     axios.get(APIURL)
       .then(data => {
         let d = data.data.drinks[0];
-        this.setState({data: [...this.state.data, this.createDataModel(d)]});
+        let dataModel = new CocktailModel();
+        this.setState({
+          data: [
+            ...this.state.data,
+            dataModel.createDataModel(d, AjaxReq.dataArrayCreator)
+          ],
+          loading: false
+        });
       })
-      .catch(err => console.log(err));
-    console.log(this);
+      .catch(err => {
+        //Dabble with the idea of making this action modular because this exact thing will be used across
+        //multiple files
+        this.setState({loading: false});
+        console.log(err)
+      });
   }
 
   render() {
@@ -65,6 +67,7 @@ class AjaxReq extends Component {
           data={this.state.data}
         />
         {this.state.data.length <= 0 ? <p>Go ahead.. make that call</p> : null}
+        {this.state.loading ? <Loader icon={"cocktail"}/> : null}
       </div>
     );
   }

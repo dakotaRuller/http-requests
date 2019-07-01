@@ -2,9 +2,10 @@ import React from "react";
 
 let CocktailListItem = ({drinkName, instructions, ingredients, measurements, id}) => (
   <li className="drink-item main-item" key={id}>
-    <p><span className={"drink-title"}>Drink:</span> {drinkName}</p>
-    <p>Instructions:</p>
-    <p className={"small-text"}>{instructions}</p>
+    <p>
+        <span className={"drink-title"}>Drink:</span>
+        {drinkName}
+    </p>
     <p className={"ingredients"}>Ingredients:</p>
     <ul className={"ingredients-list"}>
       {
@@ -21,6 +22,8 @@ let CocktailListItem = ({drinkName, instructions, ingredients, measurements, id}
         )
       }
     </ul>
+      <p>Instructions:</p>
+      <p className={"small-text"}>{instructions}</p>
   </li>
 );
 

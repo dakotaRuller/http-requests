@@ -6,8 +6,14 @@ let SpaceXFlightListItem = ({missionName, launchYear, rocket, payloads, launchSi
     <div>
       {checkNull(media.missionPatchSmall, <img src={media.missionPatchSmall} alt="Mission patch small size"/>)}
       <h2>Mission: {missionName}</h2>
-      <h2>Details: {details}</h2>
-      <p>Launch year: {launchYear}</p>
+      <div>
+        <h2>Details:</h2>
+        <p>{details}</p>
+      </div>
+      <div>
+        <h2>Launch year:</h2>
+        <p>{launchYear}</p>
+      </div>
       <h2>Rocket:</h2>
       <ul id={rocket.rocketId}>
         <li>Rocket name: {rocket.rocketName}</li>

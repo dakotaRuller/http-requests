@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 import PageTemplate from "./PageTemplate";
 import '../../CSS/fetch.css';
+import Loader from "../StatelessComponents/CssLoader";
 const APIURL = "https://api.kanye.rest/";
 
 class FetchReq extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      loading: false
     };
     this.getData = this.getData.bind(this);
   }
 
   async getData() {
+    this.setState({loading: true});
     let response = await fetch(APIURL)
     .then(rawData => {
       if(!rawData.ok) {
@@ -39,7 +42,13 @@ class FetchReq extends Component {
 
     let data = response.quote;
 
-    this.setState({data: [...this.state.data, data]});
+    this.setState({
+      data: [
+        ...this.state.data,
+        data
+      ],
+      loading: false
+    });
   }
 
   render() {
@@ -52,6 +61,7 @@ class FetchReq extends Component {
           data={this.state.data}
         />
         {this.state.data.length <= 0 ? <p>Go ahead.. make that call</p> : null}
+        {this.state.loading ? <Loader/> : null}
       </div>
     );
   }
